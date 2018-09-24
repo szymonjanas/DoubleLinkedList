@@ -21,8 +21,20 @@ add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
 enable_testing()
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_compile_options(-c
+                    -Wall
+                    -Wextra
+                    -Winit-self
+                    -Wold-style-cast
+                    -Woverloaded-virtual
+                    -Wuninitialized
+                    -pedantic
+                    -pedantic-errors
+                    -g
+)
 
 project(DoubleLinkedList)
 
