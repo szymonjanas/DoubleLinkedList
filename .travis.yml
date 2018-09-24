@@ -5,9 +5,10 @@ os: linux
 compiler: gcc
 
 script:
-    -mkdir build
-    -cd build
-    -cmake ..
-    -make
-    -./DoubleLinkedList-ut
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+    - ./DoubleLinkedList
+    - ./DoubleLinkedList-ut
 

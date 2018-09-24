@@ -1,5 +1,5 @@
 
-PROJECT: DOUBLE LINKED LIST, TRAVIS: https://travis-ci.com/szymonjanas/DoubleLinkedList.svg?branch=master
+PROJECT: DOUBLE LINKED LIST, TRAVIS: [![Build Status](https://travis-ci.com/szymonjanas/DoubleLinkedList.svg?branch=master)](https://travis-ci.com/szymonjanas/DoubleLinkedList)
 
 It is my own implementation double linked list.
 Technology used:
@@ -9,3 +9,4 @@ Technology used:
 - cmake,
 - OOD,
 - OOP,
+- exception,
