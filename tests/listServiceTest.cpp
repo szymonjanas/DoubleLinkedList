@@ -6,7 +6,6 @@ struct ListTest : public ::testing::Test
     //GIVEN
     List<int> ls;
 };
-typedef ::testing::Types<int, float> MyTypes ;
 TEST_F(ListTest, push_back_when_list_is_empty)
 {
     
