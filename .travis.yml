@@ -1,6 +1,6 @@
 launguage: cpp
 dist: trusty
-sudo: false
+sudo: require
 os: linux
 compiler: gcc
 
