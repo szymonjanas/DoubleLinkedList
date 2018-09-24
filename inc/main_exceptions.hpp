@@ -1,4 +1,7 @@
+
 #include <exception>
+
+using namespace std;
 
 class WrongPositionGiven : public runtime_error
 {
