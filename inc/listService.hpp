@@ -33,9 +33,9 @@ class List
     
     
     void push_back(TT data);
-  /*  void push_front(T data);
-    void insert(T value, unsigned int position);
-    
+    void push_front(TT data);
+    void insert(TT value, unsigned int position);
+    /*
     void pop();
     void removeLast();
     void removePos(unsigned int position);
@@ -117,3 +117,77 @@ void List<TT>::push_back(TT data)
     }
 }
 
+template<typename TT>
+void List<TT>::push_front(TT data)
+{
+    try
+    {
+        shared_ptr<Node<TT>> newNode = make_shared<Node<TT>>(data);
+        newNode->prev = nullptr;
+        
+        if (getListSize() < 0) throw pos_error;
+        else if (getListSize() == 0)
+        {
+            newNode->next = nullptr;
+            head = newNode;
+            tail = newNode;
+        }
+        else if (getListSize() == 1) 
+        {
+            tail = head;
+            newNode->next = tail;
+            tail->prev = newNode;
+            head = newNode;
+        }
+        else
+        {
+            newNode->next = head;
+            head->prev = newNode;
+            head = newNode;
+        }
+        listSize++;
+    }
+    catch (WrongPositionGiven& ex)
+    { 
+        ex.what();
+    }
+}
+
+template<typename TT>
+void List<TT>::insert(TT value, unsigned int position)
+{
+    try
+    {
+        shared_ptr<Node<TT>> newNode = make_shared<Node<TT>>(data);
+        newNode->prev = nullptr;
+        newNode->next = nullptr;
+        shared_ptr<Node<TT>> node = getNode(position);
+
+        if (getListSize() < 0 or position < 0 or position > getListSize()) 
+            throw pos_error;
+        else if (getListSize() == 0)
+        {
+            head = newNode;
+            tail = newNode;
+        }
+        else if (getListSize() == 1) 
+        {
+            tail = head;
+            newNode->next = tail;
+            tail->prev = newNode;
+            head = newNode;
+        }
+        else
+        {
+            newNode->next = node;
+            newNode->prev = node->prev;
+            node->prev = newNode;
+            head = newNode;
+        }
+        listSize++;
+    }
+    catch (WrongPositionGiven& ex)
+    { 
+        ex.what();
+    }
+}

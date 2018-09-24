@@ -29,4 +29,4 @@ script:
     - make
     - ./DoubleLinkedList
     - ./DoubleLinkedList-ut
-
+    - valgrind --leak-check=full --show-leak-kinds=all -v ./DoubleLinkedList
