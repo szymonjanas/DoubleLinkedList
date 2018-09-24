@@ -35,11 +35,11 @@ class List
     void push_back(TT data);
     void push_front(TT data);
     void insert(TT value, unsigned int position);
-    /*
-    void pop();
-    void removeLast();
-    void removePos(unsigned int position);
-    void removeByValue(T value);
+    
+    void pop_back();
+  /*  void pop_front();
+    void erase_pos(unsigned int position);
+    void erase_val(T value);
     */
 
 
@@ -124,7 +124,7 @@ void List<TT>::push_front(TT data)
     {
         shared_ptr<Node<TT>> newNode = make_shared<Node<TT>>(data);
         newNode->prev = nullptr;
-        
+
         if (getListSize() < 0) throw pos_error;
         else if (getListSize() == 0)
         {
@@ -191,3 +191,38 @@ void List<TT>::insert(TT value, unsigned int position)
         ex.what();
     }
 }
+
+template<typename TT>
+void List<TT>::pop_back()
+{
+    try
+    {
+        shared_ptr<Node<TT>> node;
+        shared_ptr<Node<TT>> spareNode;
+
+        if (getListSize() < 0) throw pos_error;
+        else if (getListSize() == 0) throw empty_error;
+        else if (getListSize() == 1) 
+        {
+            node = head;
+            tail = nullptr;
+            head = nullptr;
+            node.reset();
+        }
+        else
+        {
+            node = tail->prev;
+            node->next = nullptr;
+            spareNode = tail;
+            tail = node;
+            spareNode.reset();
+        }
+        listSize--;
+    }
+    catch (WrongPositionGiven& ex)
+    { 
+        ex.what();
+    }
+}
+
+

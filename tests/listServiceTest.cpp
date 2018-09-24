@@ -44,3 +44,16 @@ TEST_F(ListTest, push_front_one_elements)
     ASSERT_EQ(5, ls.getHead()->value);
     ASSERT_EQ(6, ls.getTail()->value);
 }
+
+TEST_F(ListTest, pop_back_element_from_list)
+{
+    //WHEN
+    ls.push_back(9);
+    ls.push_back(5);
+    ls.push_front(4);
+    ls.push_front(3);
+
+    ls.pop_back();
+    //THEN
+    ASSERT_EQ(9, ls.getTail()->value);
+}
