@@ -1,0 +1,13 @@
+launguage: cpp
+dist: trusty
+sudo: false
+os: linux
+compiler: gcc
+
+script:
+    -mkdir build
+    -cd build
+    -cmake ..
+    -make
+    -./DoubleLinkedList-ut
+
