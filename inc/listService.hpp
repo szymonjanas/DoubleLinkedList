@@ -9,9 +9,9 @@ using namespace std;
 template<typename T>
 struct Node 
 {
-    Node(int data) :
+    Node(T data) :
         value(data), next(nullptr), prev(nullptr) {}
-    int value;
+    T value;
     shared_ptr<Node> next;
     shared_ptr<Node> prev;
 
