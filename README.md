@@ -10,3 +10,4 @@ Technology used:
 - OOD,
 - OOP,
 - exception,
+- memory menegament,
