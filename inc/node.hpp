@@ -5,11 +5,12 @@ template<typename T>
 struct Node 
 {
     Node() :
-        value(0), next(nullptr), prev(nullptr) {}
+        value(0) {}
     Node(T data) :
-        value(data), next(nullptr), prev(nullptr) {}    
+        value(data) {}  
+    ~Node(){}  
     T value;
-    shared_ptr<Node> next;
-    shared_ptr<Node> prev;
+    weak_ptr<Node> next;
+    weak_ptr<Node> prev;
 
 };
