@@ -1,90 +1,37 @@
 #include <gtest/gtest.h>
+#include "list.hpp"
 
-/*
-struct ListTest : public ::testing::Test
+struct testList : public ::testing::Test
 {
-    //GIVEN
     List<int> ls;
-    void insert_data()
-    {
-        ls.push_back(9);
-        ls.push_back(4);
-        ls.push_back(5);
-        ls.push_back(7);
-    }
+
 };
 
-TEST_F(ListTest, push_back_when_list_is_empty)
+auto make_ptr(int value)
 {
-    //WHEN
-    ls.push_back(5);
-    //THEN
-    ASSERT_EQ(1, ls.getListSize());
-    ASSERT_EQ(5, ls.getHead()->value);
-    ASSERT_EQ(5, ls.getTail()->value);
+    auto val = make_shared<Node<int>>(value);
+    return val;
 }
 
-TEST_F(ListTest, push_back_few_elements)
+TEST_F( testList, push_back )
 {
-    //WHEN
-    insert_data();
-    //THEN
-    ASSERT_EQ(4, ls.getListSize());
-    ASSERT_EQ(7, ls.getTail()->value);
-    ASSERT_EQ(9, ls.getHead()->value);
+    //PUSH BACK TO EMPTY LIST
+    ls.push_back(make_ptr(111));
+    ASSERT_EQ(ls.getHead()->value, 111);
+    ASSERT_EQ(ls.getTail()->value, 111);
+
+    //PUSH BACK TO LIST WITH ONE ELEMENT
+    ls.push_back(make_ptr(222));
+    ASSERT_EQ(ls.getHead()->value, 111);
+    ASSERT_EQ(ls.getTail()->value, 222);
+
+    //PUSH BACK TO LIST WITH ELEMENTS
+    ls.push_back(make_ptr(333));
+    ASSERT_EQ(ls.getTail()->value, 333);
+    ls.push_back(make_ptr(444));
+    ASSERT_EQ(ls.getTail()->value, 444);
+    ls.push_back(make_ptr(555));
+    ASSERT_EQ(ls.getHead()->value, 111);
+    ASSERT_EQ(ls.getTail()->value, 555);
+
 }
-
-TEST_F(ListTest, push_front_one_elements)
-{
-    //WHEN
-    ls.push_front(9);
-    ls.push_front(4);
-    ls.push_front(1);
-    ls.push_front(8);
-
-    //THEN
-    ASSERT_EQ(4, ls.getListSize());
-    ASSERT_EQ(8, ls.getHead()->value);
-    ASSERT_EQ(9, ls.getTail()->value);
-}
-
-TEST_F(ListTest, pop_back_element_from_list)
-{
-    //WHEN
-    insert_data();
-
-    ls.pop_back();
-    //THEN
-    ASSERT_EQ(5, ls.getTail()->value);
-}
-
-TEST_F(ListTest, pop_front_element_from_list)
-{
-    //WHEN
-    insert_data();
-
-    ls.pop_front();
-    //THEN
-    ASSERT_EQ(4, ls.getHead()->value);
-}
-
-TEST_F(ListTest, getBackward_test)
-{
-    //WHEN
-    insert_data();
-
-    //THEN
-    ASSERT_EQ(4, ls.getBackward(4)->value);
-}
-
-TEST_F(ListTest, clear_test)
-{
-    //WHEN
-    insert_data();
-    ASSERT_EQ(4, ls.getListSize());
-
-    //THEN
-    ls.clear();
-    ASSERT_EQ(0, ls.getListSize());
-}
-*/

@@ -15,6 +15,7 @@ class List
     unsigned int listSize;
 
     bool push_first(shared_ptr<Node<T>>) noexcept;
+    
     public:
     List():
         head(nullptr), tail(nullptr), listSize(0) {}
